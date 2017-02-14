@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scheduler", "Scheduler\Scheduler.csproj", "{7C3135A8-FF66-48F6-A0E4-291CFAC3601F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchedulerDbLayer", "SchedulerDbLayer\SchedulerDbLayer.csproj", "{205E39E9-EAEC-4080-A530-F7F75795F458}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business Layer", "Business Layer\Business Layer.csproj", "{5AD3AA88-D774-4B42-A6B8-8790CF34DAEE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C3135A8-FF66-48F6-A0E4-291CFAC3601F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C3135A8-FF66-48F6-A0E4-291CFAC3601F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C3135A8-FF66-48F6-A0E4-291CFAC3601F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C3135A8-FF66-48F6-A0E4-291CFAC3601F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{205E39E9-EAEC-4080-A530-F7F75795F458}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{205E39E9-EAEC-4080-A530-F7F75795F458}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{205E39E9-EAEC-4080-A530-F7F75795F458}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{205E39E9-EAEC-4080-A530-F7F75795F458}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AD3AA88-D774-4B42-A6B8-8790CF34DAEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AD3AA88-D774-4B42-A6B8-8790CF34DAEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AD3AA88-D774-4B42-A6B8-8790CF34DAEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AD3AA88-D774-4B42-A6B8-8790CF34DAEE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

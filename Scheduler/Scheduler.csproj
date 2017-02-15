@@ -64,6 +64,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClsVolunteer.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="CreateUser.aspx.cs">
       <DependentUpon>CreateUser.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

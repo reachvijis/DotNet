@@ -30,7 +30,7 @@
                     <asp:Label ID="Label1" Text="Password" runat="server" />
                 </td>
                 <td>
-                    <asp:TextBox runat="server" ID="txtPassword" />
+                    <asp:TextBox runat="server" ID="txtPassword" TextMode="Password" />
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" Display="Dynamic" ErrorMessage="Password Required" ControlToValidate="txtPassword" ForeColor="Red"></asp:RequiredFieldValidator>
                 </td>
 
@@ -49,16 +49,13 @@
                 </td>
                
             </tr>
-            <tr>
-                <td>
-                    <a href="#"> Forgot Password?</a>
-                    <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
-                </td>
-            </tr>
+            
         </table>
     </div>
     
     
         </form>
+    <p>
+        &nbsp;</p>
 </body>
 </html>

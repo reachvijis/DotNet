@@ -4,30 +4,47 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Business_Layer;
 
 namespace Scheduler
 {
     public partial class Scheduler : System.Web.UI.Page
     {
+        private ClsBusinessLayer objBusiness = new ClsBusinessLayer();
+
+     
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                populateTimelist();
-            }
-            
 
+
+                if (Session["volunteer"] != null)
+                {
+                    ClsVolunteer objVolunteer = Session["volunteer"] as ClsVolunteer;
+                    //string name = Session["Name"].ToString();
+                    //name = objVolunteer.EmailAddress;
+                    //  Label8.Text = objVolunteer.Name;
+
+                    txtName.Text = objVolunteer.Name;
+               }
+                populateTimelist();
+                
+                string volunteerId = Session["ID"].ToString();
+
+                populateAssistantList(volunteerId);
+
+            }
 
         }
         
 
-        protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
-        {
+       
 
-        }
+
         private void populateTimelist()
         {
-            // t = {
+           
             string time = "";
             for (int i = 8; i <= 12; i++)
             {
@@ -41,6 +58,44 @@ namespace Scheduler
             }
             ddlTime.Items.Add("1:00");
             ddlTime.Items.Add("1:15");
+
+        }
+
+        private void populateAssistantList( string volunteerId) {
+
+            ddlAssistant.DataSource= objBusiness.loadAssistants(volunteerId);
+            ddlAssistant.DataTextField = "Name";
+            ddlAssistant.DataValueField = "id";
+            ddlAssistant.DataBind();
+            ddlAssistant.Items.Insert(0, "------");
+            ddlAssistant.SelectedIndex=0;
+        }
+
+        protected void ddlgrade_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            int grade = Convert.ToInt32(ddlGrade.SelectedValue);
+            ddlTeacher.DataSource= objBusiness.loadTeacherByGrade(grade);
+            ddlTeacher.DataTextField = "Name";
+            ddlTeacher.DataValueField = "id";
+            ddlTeacher.DataBind();
+            ddlTeacher.Items.Insert(0, "------");
+            ddlTeacher.SelectedIndex = 0;
+        }
+
+        protected void ddlTeacher_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (Session["volunteer"] != null)
+            {
+                ClsVolunteer objVolunteer = Session["volunteer"] as ClsVolunteer;
+                //string name = Session["Name"].ToString();
+                //name = objVolunteer.EmailAddress;
+              //  Label8.Text = objVolunteer.Name;
+            }
+           string comments= objBusiness.getTeacherComments(ddlTeacher.SelectedValue.ToString());
+           lblComments.Text = "Your teacher prefers " + comments;
+
 
         }
 

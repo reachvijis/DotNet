@@ -23,16 +23,12 @@ namespace Business_Layer
 
         }
 
-        public string loadUser(string uname)
+        public DataSet loadUser(string uname)
         {
-            DataSet ds =(DataSet) dbObj.getVolunteerId(uname);
 
-            //objVolunteer.FirstName = ds.Tables[0].Columns["FirstName"].ToString();
-            //objVolunteer.LastName = ds.Tables[0].Columns["lastName"].ToString();
-            //objVolunteer.EmailAddress = ds.Tables[0].Columns["Email"].ToString();
-            //objVolunteer.Id = Convert.ToInt32( ds.Tables[0].Columns["id"].ToString());
-           
-            return(  ds.Tables[0].Columns["VolunteerId"].ToString());
+            string vid = dbObj.getVolunteerId(uname);
+            DataSet ds =(DataSet) dbObj.getVolunteerInfo(vid);         
+            return( ds);
 
         }
 
@@ -41,7 +37,20 @@ namespace Business_Layer
               
         }
 
+        public DataSet loadTeacherByGrade(int grade)
+        {
+          return(  (DataSet)dbObj.getTeacherByGrade(grade));
+        }
 
-       
+        public DataSet loadAssistants(string volunteerId)
+        {
+
+            return ((DataSet)dbObj.getAssistantInfo(volunteerId));
+        }
+        public  string getTeacherComments(string teacherId)
+        {
+
+            return dbObj.getTeacherComments(teacherId);
+        }
     }
 }

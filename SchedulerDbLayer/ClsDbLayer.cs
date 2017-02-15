@@ -29,22 +29,43 @@ namespace SchedulerDbLayer
 
         }
 
+        public string ExecuteSqlScalar(string query)
+        {
+
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            SqlCommand cmd = new SqlCommand(query, con);
+          return   cmd.ExecuteScalar().ToString();
+        }
+
         public object CheckUser(string userName, string password)
         {
 
             string query = "Select * from tblVolunteerLogin where userName='" + userName + "' and Password = '" + password + "'";
             return ExecuteSqlString(query);
         }
-        public object getVolunteerId(string uname)
-        { 
-        string query="select VolunteerId from tblVolunteerLogin where UserName = '"+ uname+"'";
-        return ExecuteSqlString(query);
+        public string getVolunteerId(string uname)
+        {
+            string query = "select VolunteerId from tblVolunteerLogin where UserName = '" + uname + "'";
+            return ExecuteSqlScalar(query);
+        }
+
+        public object getVolunteerInfo(string volunteerId) {
+
+            string query = "select id,FirstName+ ' '+ lastName as Name,Email from tblVolunteer where id='" + volunteerId + "'";
+            return ExecuteSqlString(query);
+        }
+
+        public object getAssistantInfo(string volunteerId) {
+
+            string query = "select id,FirstName+ ' '+ lastName as Name,Email from tblVolunteer where id !='" + volunteerId + "'";
+            return ExecuteSqlString(query);
         }
 
         public bool addUser(string fname, string lname, string phonenumber, string email, string uname, string password)
         {
-
-        //    con.ConnectionString = conStr;
 
             con.Open();
             string query = "Select count(*) from tblVolunteerLogin where userName='" + uname + "'";
@@ -74,6 +95,20 @@ namespace SchedulerDbLayer
                 return false;
             }
 
+
+        }
+
+        public object getTeacherByGrade(int grade)
+        { 
+        string query ="select id, FirstName +' '+LastName  as Name,Email from tblTeacher where Grade = '"+ grade + "'";
+        return ExecuteSqlString(query);
+
+        }
+
+        public string getTeacherComments(string teacherId)
+        { 
+        string query ="select Comments from tblTeacher where id='"+teacherId+"'";
+        return ExecuteSqlScalar(query);
 
         }
     }
